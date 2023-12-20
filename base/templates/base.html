@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item List</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h2>Item List</h2>
+<button>Add Item</button>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date of Creation</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in data %}
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.created }}</td>
+          </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
