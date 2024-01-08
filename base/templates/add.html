@@ -1,0 +1,14 @@
+{% load widget_tweaks %}
+
+<div>
+  <form novalidate method="post">
+    {% for field in form.visible_fields %}
+      <div>
+        <label for="{{ field.id_for_label }}">{ field.label }</label>
+        {{ field|add_class:'form-control' }}
+      </div>
+    {% endfor %}
+    <button type="submit" >Submit</button>
+    <a href="{% url 'base' %}">Cancel</a>
+  </form>
+</div>
