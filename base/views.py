@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from api import views
+from django.urls import reverse_lazy
 from .models import Item
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 import requests
 
 # Create your views here.
@@ -18,3 +18,10 @@ class SingleView(DetailView):
   model = Item
   template_name = 'single.html'
   context_object_name = 'item'
+
+class AddView(CreateView):
+  model = Item
+  # fields = ['title', 'description']
+  template_name = 'add.html'
+  fields = '__all__'
+  success_url = reverse_lazy('base')

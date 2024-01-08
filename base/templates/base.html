@@ -22,7 +22,7 @@
 </head>
 <body>
 <h2>Item List</h2>
-<button>Add Item</button>
+<a href="{% url 'base:add' %}">Add Item</a>
 <table>
     <thead>
         <tr>
@@ -35,6 +35,9 @@
             <tr>
                 <td><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></td>
                 <td>{{ item.created }}</td>
+                <td>
+
+                </td>
             </tr>
         {% endfor %}
     </tbody>
