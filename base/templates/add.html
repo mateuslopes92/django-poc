@@ -2,13 +2,19 @@
 
 <div>
   <form novalidate method="post">
+    {% csrf_token %}
     {% for field in form.visible_fields %}
-      <div>
-        <label for="{{ field.id_for_label }}">{ field.label }</label>
+      <div style="display: flex; width: 33%; flex-direction: column; margin-bottom: 10px;">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
         {{ field|add_class:'form-control' }}
+        {% for error in fields.errors %}
+          <span style="color: red;">{{error}}</span>
+        {% endfor %}
       </div>
     {% endfor %}
-    <button type="submit" >Submit</button>
-    <a href="{% url 'base' %}">Cancel</a>
+    <button type="submit" style="border: 0; background-color: green; border-radius: 6px; color: white;">
+      Submit
+    </button>
+    <a href="{% url 'base:base' %}">Cancel</a>
   </form>
 </div>
