@@ -24,4 +24,4 @@ class AddView(CreateView):
   # fields = ['title', 'description']
   template_name = 'add.html'
   fields = '__all__'
-  success_url = reverse_lazy('base')
+  success_url = reverse_lazy('base:base')
