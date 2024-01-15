@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from .models import Item
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 import requests
 
 # Create your views here.
@@ -21,7 +21,19 @@ class SingleView(DetailView):
 
 class AddView(CreateView):
   model = Item
-  # fields = ['title', 'description']
   template_name = 'add.html'
   fields = '__all__'
+  success_url = reverse_lazy('base:base')
+
+class EditView(UpdateView):
+  model = Item
+  template_name = 'edit.html'
+  fields = '__all__'
+  pk_url_kwarg = 'pk'
+  success_url = reverse_lazy('base:base')
+
+class Delete(DeleteView):
+  model = Item
+  template_name = 'confirm-delete.html'
+  pk_url_kwarg = 'pk'
   success_url = reverse_lazy('base:base')
